@@ -5,6 +5,13 @@ body {
 	height: 100%;
 }
 
+.open {
+	display: block;
+	margin: 0 auto;
+	position: relative;
+	top: 100px;
+}
+
 .wapper {
 	width: 50%;
 	height: 50%;
@@ -19,7 +26,7 @@ body {
 	align-items: center;
 }
 
-.header .btn button {
+button {
 	cursor: pointer;
 	border: 0.0625rem solid #409eff;
 	outline: none;

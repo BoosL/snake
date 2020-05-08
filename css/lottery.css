@@ -1,0 +1,34 @@
+html,
+body {
+	margin: 0;
+	padding: 0;
+	height: 100%;
+}
+
+.lottery {
+	margin: 0 auto;
+	width: 800px;
+	height: 606px;
+	position: relative;
+	top: 12.5rem;
+}
+
+li {
+	width: 150px;
+	height: 150px;
+	list-style-type: none;
+	float: left;
+	line-height: 100px;
+	text-align: center;
+	border: 1px solid #ccc;
+}
+
+.lot-btn{
+	width: 302px;
+	height: 300px;
+	margin-left: 152px;
+}
+
+button {
+	cursor: pointer;
+}

@@ -26,11 +26,10 @@ function init() {
 	}
 
 	document.getElementById('restart').onclick = function() {
-		snake.stop();
-		snake = new Sanke(data.x, data.y);
+		snake = new Snake(data.x, data.y);
 		food = new Food();
+		snake.stop();
 		score = 0;
-		snake.move();
 	}
 }
 
@@ -39,24 +38,22 @@ function init() {
 function getKey() {
 	document.onkeydown = function(event) {
 		var e = event || window.event || arguments.callee.caller.arguments[0];
-		console.log(e.keyCode, '11')
-		if (e && e.keyCode == 38) { //下
-			if (snake.direction !== 'top')
-				snake.direction = 'bottom'
-		}
-		if (e && e.keyCode == 37) { //左
-			if (snake.direction !== 'right')
-				snake.direction = 'left'
-		}
-
-		if (e && e.keyCode == 39) { //右
-			if (snake.direction !== 'left')
-				snake.direction = 'right'
-		}
-
-		if (e && e.keyCode == 40) { //上
-			if (snake.direction !== 'bottom')
-				snake.direction = 'top'
+		switch (e && e.keyCode) {
+			case 37:
+				if (snake.direction !== 'right')
+					snake.direction = 'left'
+				break;
+			case 38:
+				if (snake.direction !== 'top')
+					snake.direction = 'bottom'
+				break;
+			case 39:
+				if (snake.direction !== 'left')
+					snake.direction = 'right'
+				break;
+			case 40:
+				if (snake.direction !== 'bottom')
+					snake.direction = 'top'
 		}
 	}
 }
@@ -95,7 +92,7 @@ function Snake(x, y) {
 	this.moving = true;
 	this.body = [
 		[x, y]
-	]; // 蛇的身体
+	]; // 蛇身
 	this.direction = 'right'; //初始方向
 	this.time = null; //定时器
 	// 让🐍动起来
@@ -107,6 +104,7 @@ function Snake(x, y) {
 				that.body[i][0] = that.body[i - 1][0];
 				that.body[i][1] = that.body[i - 1][1];
 			};
+			console.log(that.direction,'direction',that.body)
 			switch (that.direction) {
 				case 'right':
 					that.body[0][0] += 1
@@ -154,8 +152,6 @@ function Snake(x, y) {
 		clearInterval(this.time);
 	};
 };
-
-
 
 
 // 创建食物
